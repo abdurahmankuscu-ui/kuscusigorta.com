@@ -640,6 +640,18 @@
     }
     dialog.legal .legal-body { max-height: none; flex: 1 1 auto; }
     dialog.legal .legal-head { flex-shrink: 0; }
+    /* Yaren sohbet paneli mobilde tam ekran sohbet gibi açılsın:
+       başlık üstte sabit, mesajlar ortada kayan, input altta. Klavye açılınca
+       panel kayıp başlık/Kapat ekran dışına çıkmasın. (.open özgüllüğü 960px'in
+       bottom:150px kuralını geçer.) */
+    .yaren-panel.open {
+      top: 10px; right: 10px; bottom: 10px; left: 10px;
+      width: auto; height: auto; max-height: none;
+    }
+    .yaren-panel .yaren-head { flex-shrink: 0; }
+    .yaren-panel .yaren-chips,
+    .yaren-panel .yaren-input,
+    .yaren-panel .yaren-note { flex-shrink: 0; }
   }
   .legal-body {
     padding: 24px 28px 36px;
