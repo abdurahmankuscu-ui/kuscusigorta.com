@@ -630,6 +630,16 @@
     .kurum-liste { grid-template-columns: repeat(2, 1fr); gap: 10px; }
     .kurum-liste a { height: 72px; padding: 10px 12px; }
     .kurum-liste img { width: 96px; height: 34px; }
+    /* Açılır pencereler (rehber yazıları, ürün/hasar detayı, yasal metinler)
+       mobilde tüm ekranı kaplasın — yarım/ortada kutu görünmesin. */
+    dialog.legal {
+      width: 100vw; max-width: 100vw;
+      height: 100vh; height: 100dvh; max-height: 100dvh;
+      border: none; border-radius: 0;
+      display: flex; flex-direction: column;
+    }
+    dialog.legal .legal-body { max-height: none; flex: 1 1 auto; }
+    dialog.legal .legal-head { flex-shrink: 0; }
   }
   .legal-body {
     padding: 24px 28px 36px;
