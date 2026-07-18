@@ -1136,10 +1136,47 @@
   .figur-sss { width: 280px; max-width: 70vw; margin: 0 auto 24px; }
   .figur-ark { width: 190px; flex-shrink: 0; background: #FFFFFF; border-radius: 16px; padding: 14px 16px; }
 
+  /* Hamburger menü — masaüstünde GİZLİ (sadece mobil media query'sinde açılır) */
+  .hamburger {
+    display: none;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 42px; height: 42px; padding: 0 9px;
+    background: rgba(255,255,255,.42); border: 1px solid rgba(30,44,71,0.18);
+    border-radius: 11px; cursor: pointer;
+  }
+  .hamburger span { display: block; height: 2.5px; border-radius: 2px; background: #1E2C47; transition: transform .25s ease, opacity .2s ease; }
+  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  /* Mobil menü paneli — masaüstünde GİZLİ */
+  .mobil-menu {
+    display: none;
+    position: fixed; top: 92px; left: 12px; right: 12px; z-index: 999;
+    background: rgba(255,255,255,0.97);
+    -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+    border: 1px solid rgba(30,44,71,0.12); border-radius: 16px;
+    box-shadow: 0 20px 44px rgba(15,27,48,0.18);
+    flex-direction: column; padding: 8px;
+    opacity: 0; transform: translateY(-10px); pointer-events: none;
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .mobil-menu a {
+    padding: 14px 16px; font-weight: 700; font-size: 16px; color: #1E2C47;
+    border-radius: 10px;
+  }
+  .mobil-menu a:active, .mobil-menu a:hover { background: var(--mist); color: var(--gold-2); }
+  .mobil-menu.acik { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
   /* duyarlı */
   @media (max-width: 960px) {
     nav.main { display: none; }
     .top-actions .btn-ghost { display: none; }
+    .hamburger { display: flex; }              /* mobilde göster */
+    .mobil-menu { display: flex; }             /* mobilde etkin (açılınca .acik ile görünür) */
+    /* Sağ alttaki balonlar mobilde daha küçük */
+    .fab { width: 56px; height: 56px; }
+    .fab-stack { right: 16px; bottom: 16px; gap: 10px; }
+    .yaren-panel { bottom: 150px; }
     .products { grid-template-columns: repeat(3, 1fr); }
     .why-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1485,9 +1522,22 @@
       <div class="top-actions" style="display:flex; gap:8px;">
         <span class="btn btn-ghost portal-btn portal-soon" aria-label="Müşteri Portalı çok yakında"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></svg><span class="mg-text">Portal Çok Yakında</span></span>
         <a class="btn btn-gold" href="#teklif">Teklif Al</a>
+        <button type="button" class="hamburger" id="hamburger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobilMenu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- MOBİL MENÜ (yalnızca dar ekranda görünür) -->
+  <nav class="mobil-menu" id="mobilMenu" aria-label="Mobil menü">
+    <a href="#urunler">Ürünlerimiz</a>
+    <a href="#portal">Müşteri Portalı</a>
+    <a href="#hasar">Hasar Destek</a>
+    <a href="#blog">Sigorta Rehberi</a>
+    <a href="#hakkimizda">Hakkımızda</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
 
   <!-- HERO GÖRSELİ -->
   <section class="hero-gorsel" aria-label="Kuşcu Sigorta">
@@ -2481,6 +2531,27 @@
     onScroll();
   })();
 
+  // Mobil hamburger menü — dokununca açılır, bağlantıya dokununca kapanır
+  (function () {
+    var btn = document.getElementById('hamburger');
+    var menu = document.getElementById('mobilMenu');
+    if (!btn || !menu) return;
+    function ac() { menu.classList.add('acik'); btn.setAttribute('aria-expanded', 'true'); btn.setAttribute('aria-label', 'Menüyü kapat'); }
+    function kapat() { menu.classList.remove('acik'); btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-label', 'Menüyü aç'); }
+    btn.addEventListener('click', function () {
+      if (menu.classList.contains('acik')) kapat(); else ac();
+    });
+    // menüdeki bağlantıya dokununca kapat (kaydırmayı mevcut lenis handler yapar)
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', kapat);
+    });
+    // dışarı dokununca / Escape ile kapat
+    document.addEventListener('click', function (e) {
+      if (menu.classList.contains('acik') && !menu.contains(e.target) && e.target !== btn && !btn.contains(e.target)) kapat();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') kapat(); });
+  })();
+
   // FAB küpleri: fareyle etkileşimli 3B eğilme + tıklama dönüşü.
   (function () {
     var azalt = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -2529,16 +2600,14 @@
         dondur(yarenImg);
       });
     }
-    // WhatsApp (link): önce dön, dönüş bitince sayfayı aç.
+    // WhatsApp (link): linki ENGELLEME — anında açılsın, dönüş aynı anda oynasın.
+    // (Gecikmeli window.open mobil tarayıcılarda "kullanıcı isteği değil" sayılıp engelleniyordu.)
     var waLink = document.querySelector('.fab-wa');
     var waImg = waLink ? waLink.querySelector('img') : null;
     if (waLink && waImg) {
-      waLink.addEventListener('click', function (e) {
-        if (azalt) return;                        // hareket kapalıysa normal link
-        if (waImg.classList.contains('donuyor')) return;
-        e.preventDefault();
-        var href = waLink.href;
-        dondur(waImg, function () { window.open(href, '_blank', 'noopener'); });
+      waLink.addEventListener('click', function () {
+        if (azalt) return;
+        dondur(waImg);            // sadece dekoratif dönüş; linkin doğal açılışına dokunma
       });
     }
   })();
