@@ -1493,6 +1493,25 @@
   .hakkimizda .blk-head h2 { text-wrap: balance; }
   .hakkimizda-metin { max-width: 900px; }
   .hakkimizda-metin p { font-size: 17px; line-height: 1.8; }
+
+  /* --- İletişim: bilgi kartı + Bize Ulaşın formu (2026-07-20) --- */
+  .iletisim-grid { display: grid; grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.3fr); gap: 26px; align-items: start; }
+  .iletisim-bilgi { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: 28px 26px; display: flex; flex-direction: column; gap: 24px; }
+  .il-satir { display: flex; gap: 14px; align-items: flex-start; }
+  .il-ikon { flex-shrink: 0; width: 46px; height: 46px; border-radius: 50%; background: rgba(204, 10, 20, 0.08); color: var(--gold-2); display: grid; place-items: center; }
+  .il-ikon svg { width: 20px; height: 20px; }
+  .il-metin { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .il-metin b { font-size: 12.5px; font-weight: 600; color: var(--muted); }
+  .il-metin a, .il-metin > span { color: var(--paper); font-size: 15px; font-weight: 600; text-decoration: none; line-height: 1.42; }
+  .il-metin a:hover { color: var(--gold-2); }
+  .il-yol { font-size: 12.5px !important; color: var(--gold-2) !important; font-weight: 700; margin-top: 3px; }
+  .iletisim-form .q-card { padding: 28px; }
+  .iletisim-form .w-head b { display: block; font-size: 19px; color: var(--paper); font-weight: 700; }
+  .iletisim-form .w-head p { margin: 6px 0 18px; color: var(--muted); font-size: 14px; }
+  .iletisim-form #ilt-form { display: grid; gap: 14px; }
+  .iletisim-form #ilt-gonder { width: 100%; margin-top: 4px; }
+  @media (max-width: 860px) { .iletisim-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .iletisim-form .q-row2 { grid-template-columns: 1fr; } }
 </style>
 
 <div class="page" lang="tr">
@@ -1920,27 +1939,80 @@
   <section class="blk iletisim" id="iletisim">
     <div class="wrap">
       <div class="blk-head reveal">
-        <h2>Bize <span>ulaşın</span></h2>
-        <p>Telefonla, WhatsApp'tan ya da kahvemizi içmeye ofisimize gelin.</p>
+        <h2>İletişim</h2>
+        <p>Sorularınız, talepleriniz, öneri ve şikâyetleriniz için buradayız — size en kısa sürede dönelim.</p>
       </div>
       <div class="iletisim-grid reveal">
-        <div class="iletisim-kart">
-          <h3>İletişim Kanalları</h3>
-          <ul>
-            <li>📱 <a href="tel:05422404239">0542 240 42 39</a></li>
-            <li>☎️ <a href="tel:02124316224">0212 431 62 24</a> · <a href="tel:02124316225">25</a> · <a href="tel:02124316226">26</a></li>
-            <li>✉️ <a href="mailto:info@kuscusigorta.com">info@kuscusigorta.com</a></li>
-          </ul>
+          <div class="iletisim-bilgi">
+            <div class="il-satir">
+              <span class="il-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+              <div class="il-metin">
+                <b>Yardım için arayın</b>
+                <a href="tel:+902124316224">0212 431 62 24</a>
+                <a href="tel:+905422404239">0542 240 42 39</a>
+              </div>
+            </div>
+            <div class="il-satir">
+              <span class="il-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+              <div class="il-metin">
+                <b>E-posta'dan ulaşın</b>
+                <a href="mailto:info@kuscusigorta.com">info@kuscusigorta.com</a>
+              </div>
+            </div>
+            <div class="il-satir">
+              <span class="il-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <div class="il-metin">
+                <b>Genel Müdürlük</b>
+                <span>Fevzi Çakmak Mah. Atışalanı Cad. No:188B Esenler / İstanbul</span>
+                <a class="il-yol" href="https://www.google.com/maps/dir/?api=1&destination=Fevzi+%C3%87akmak+Mah.+At%C4%B1%C5%9Falan%C4%B1+Cad.+No:188B+Esenler+%C4%B0stanbul" target="_blank" rel="noopener">Yol tarifi al &rarr;</a>
+              </div>
+            </div>
+            <div class="il-satir">
+              <span class="il-ikon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div class="il-metin">
+                <b>Çalışma saatleri</b>
+                <span>Hafta içi 09.00 &ndash; 18.00 &middot; Cumartesi 09.00 &ndash; 14.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="iletisim-form">
+            <div class="q-card">
+              <div class="w-head"><b>Bize Ulaşın</b><p>Formu doldurun, size en kısa sürede dönelim.</p></div>
+              <form id="ilt-form" novalidate>
+                <div class="q-row2">
+                  <div class="q-field"><label for="ilt-ad">Ad</label><input id="ilt-ad" name="ad" type="text" placeholder="Adınız"></div>
+                  <div class="q-field"><label for="ilt-soyad">Soyad</label><input id="ilt-soyad" name="soyad" type="text" placeholder="Soyadınız"></div>
+                </div>
+                <div class="q-row2">
+                  <div class="q-field"><label for="ilt-konu">Konu Seçiniz</label>
+                    <select id="ilt-konu" name="konu">
+                      <option value="" selected disabled>Seçiniz</option>
+                      <option>Teşekkür etmek istiyorum</option>
+                      <option>Öneride bulunmak istiyorum</option>
+                      <option>Talebimi iletmek istiyorum</option>
+                      <option>Şikayetimi iletmek istiyorum</option>
+                      <option>Hasar bildirmek istiyorum</option>
+                      <option>Başka bir konuda destek almak istiyorum</option>
+                    </select>
+                  </div>
+                  <div class="q-field"><label for="ilt-baslik">Konu Başlığı</label><input id="ilt-baslik" name="baslik" type="text" placeholder="Kısa başlık"></div>
+                </div>
+                <div class="q-row2">
+                  <div class="q-field"><label for="ilt-eposta">E-posta</label><input id="ilt-eposta" name="eposta" type="email" placeholder="ornek@eposta.com"></div>
+                  <div class="q-field"><label for="ilt-tel">Telefon Numarası</label><input id="ilt-tel" name="tel" type="tel" placeholder="05__ ___ __ __" autocomplete="tel"></div>
+                </div>
+                <div class="q-field"><label for="ilt-mesaj">Mesajınız</label><textarea id="ilt-mesaj" name="mesaj" rows="4" placeholder="Bize iletmek istediğiniz konuyu yazın…"></textarea></div>
+                <label class="q-kvkk"><input type="checkbox" id="ilt-kvkk"><span><span class="legal-link q-kvkk-link" data-dialog="yasal-kvkk" role="button" tabindex="0">KVKK Aydınlatma Metni</span>'ni okudum, kişisel verilerimin işlenmesini kabul ediyorum.</span></label>
+                <button class="btn btn-gold" id="ilt-gonder" type="submit">Formu Gönder</button>
+              </form>
+              <div class="q-success" id="ilt-success" hidden>
+                <div class="big">Mesajınız alındı ✓</div>
+                <p id="ilt-success-msg">En kısa sürede size dönüş yapacağız. Teşekkür ederiz.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="iletisim-kart">
-          <h3>Ofisimiz</h3>
-          <ul>
-            <li>📍 Fevzi Çakmak Mah. Atışalanı Cad. No:188B<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Esenler / İstanbul</li>
-            <li>🕘 Hafta içi 09.00 – 18.00<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cumartesi 09.00 – 14.00</li>
-          </ul>
-          <a class="btn btn-gold" style="margin-top:14px;" href="https://www.google.com/maps/search/?api=1&amp;query=Fevzi+%C3%87akmak+Mah.+At%C4%B1%C5%9Falan%C4%B1+Cad.+No:188B+Esenler+%C4%B0stanbul" target="_blank" rel="noopener">📍 Yol Tarifi Al</a>
-        </div>
-      </div>
       <div class="iletisim-harita reveal">
         <iframe
           src="https://maps.google.com/maps?q=Fevzi+%C3%87akmak+Mah.+At%C4%B1%C5%9Falan%C4%B1+Cad.+No:188B+Esenler+%C4%B0stanbul&amp;output=embed"
@@ -6472,4 +6544,21 @@
     });
   })();
 
+
+  (function () {
+    var f = document.getElementById('ilt-form');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ad = document.getElementById('ilt-ad').value.trim();
+      var tel = document.getElementById('ilt-tel').value.trim();
+      var eposta = document.getElementById('ilt-eposta').value.trim();
+      var kvkk = document.getElementById('ilt-kvkk');
+      if (!ad) { document.getElementById('ilt-ad').focus(); return; }
+      if (!tel && !eposta) { document.getElementById('ilt-tel').focus(); return; }
+      if (!kvkk.checked) { kvkk.focus(); return; }
+      f.hidden = true;
+      document.getElementById('ilt-success').hidden = false;
+    });
+  })();
 </script>
