@@ -1517,9 +1517,9 @@
   @media (min-width: 961px) { .wordmark .logo { width: 186px; height: auto; } }
   .nav-wa { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 12px; transition: transform .18s ease, background .18s ease; }
   .nav-wa:hover { transform: translateY(-1px); background: rgba(37, 211, 102, 0.10); }
-  .nav-wa svg { display: block; }
-  .nav-yaren { background: transparent; color: var(--paper); border: 1.5px solid rgba(30, 44, 71, 0.30); padding: 9px 17px; border-radius: 999px; font-family: var(--font-body); font-weight: 700; font-size: 14px; cursor: pointer; white-space: nowrap; transition: background .18s ease, border-color .18s ease, color .18s ease; }
-  .nav-yaren:hover { background: var(--paper); border-color: var(--paper); color: #fff; }
+  .nav-wa svg { display: block; width: 30px; height: 30px; }
+  /* Yaren'e Sor = Teklif Al ile aynı kırmızı (btn btn-gold sınıflarıyla) */
+  .nav-yaren { cursor: pointer; white-space: nowrap; }
   /* mobilde Yaren'e Sor hamburger menüde; WhatsApp ikonu üstte kalır */
   @media (max-width: 960px) { .nav-yaren { display: none; } }
   .mobil-menu .mobil-wa, .mobil-menu .mobil-yaren { padding: 14px 16px; font-weight: 700; font-size: 16px; color: #1E2C47; border-radius: 10px; text-align: left; }
@@ -1606,7 +1606,7 @@
       </nav>
       <div class="top-actions" style="display:flex; gap:8px;">
         
-        <a class="nav-wa" href="https://api.whatsapp.com/send/?phone=905422404239&amp;text=Merhabalar%2C+bilgi+almak+istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp'tan yazın"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1 1.7.7 2.4.8 3.2.6.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/></svg></a><button type="button" class="nav-yaren" id="yaren-toggle" aria-label="Yaren asistana sor" aria-expanded="false">Yaren'e Sor</button><a class="btn btn-gold" href="#teklif">Teklif Al</a>
+        <a class="nav-wa" href="https://api.whatsapp.com/send/?phone=905422404239&amp;text=Merhabalar%2C+bilgi+almak+istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp'tan yazın"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="#25D366" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2z"/><path fill="#fff" d="M17 14.4c-.3-.1-1.6-.8-1.9-.9-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.2-.4-2.2-1.4-.8-.7-1.4-1.6-1.5-1.9-.2-.3 0-.4.1-.5l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.3 0-.5 0-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.4 0-.7.3-.2.3-.9.9-.9 2.2s1 2.6 1.1 2.7c.1.2 1.9 3 4.7 4.1 1.7.7 2.4.8 3.2.6.5-.1 1.6-.7 1.8-1.3.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.5-.3z"/></svg></a><button type="button" class="btn btn-gold nav-yaren" id="yaren-toggle" aria-label="Yaren asistana sor" aria-expanded="false">Yaren'e Sor</button><a class="btn btn-gold" href="#teklif">Teklif Al</a>
         <button type="button" class="hamburger" id="hamburger" aria-label="Menüyü aç" aria-expanded="false" aria-controls="mobilMenu">
           <span></span><span></span><span></span>
         </button>
